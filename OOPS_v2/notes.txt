@@ -1,0 +1,24 @@
+OOPS : 
+1. Instead of structuring everything only as functions and data separately, we model the application using objects that contain state + behavior.
+        public class Employee {
+            private String name;
+            private double salary;
+
+            public void increaseSalary(double amount) {
+                salary += amount;
+            }
+        }
+        Employee
+        ├── State
+        │    ├── name
+        │    └── salary
+        │
+        └── Behaviour
+            └── increaseSalary()
+
+OOP
+├── Encapsulation - Encapsulation means bundling data and the operations working on that data inside a class while restricting direct access to the object's internal state.
+├── Abstraction
+├── Inheritance
+└── Polymorphism
+
