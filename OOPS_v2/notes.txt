@@ -18,7 +18,143 @@ OOPS :
 
 OOP
 ├── Encapsulation - Encapsulation means bundling data and the operations working on that data inside a class while restricting direct access to the object's internal state.
-├── Abstraction
-├── Inheritance
+├── Abstraction - Abstraction means exposing essential behaviour while hiding unnecessary implementation details. =>
+ Encapsulation
+     ↓
+Protect HOW DATA is accessed
+
+
+Abstraction
+     ↓
+Hide HOW IMPLEMENTATION works
+
+├── Inheritance  - Inheritance lets the child class reuse or specialize behaviour from the parent.Inheritance represents an IS-A relationship.
 └── Polymorphism
 
+Method overriding : 
+-Compiler → reference type → determines WHAT methods you are allowed to call
+-Runtime/JVM → actual object → determines WHICH overridden implementation executes
+class Animal {
+    void sound() {
+        System.out.println("Animal");
+    }
+}
+
+class Dog extends Animal {
+    @Override
+    void sound() {
+        System.out.println("Dog");
+    }
+
+    void bite() {
+        System.out.println("Bite");
+    }
+}
+Animal animal = new Dog();
+
+animal.sound(); // ✅ Dog
+animal.bite();  // ❌ Compile-time error
+
+animal.sound()
+
+Compiler:
+Animal has sound()? → YES ✅
+
+Runtime:
+Actual object = Dog
+Dog overrides sound()? → YES
+Execute Dog.sound()
+
+
+animal.bite()
+
+Compiler:
+Animal has bite()? → NO ❌
+
+STOP.
+Runtime is never reached.
+But the Dog object really DOES contain bite()
+Absolutely. The object itself is still a complete Dog object.
+
+--You can prove that by downcasting:
+Animal animal = new Dog();
+Dog dog = (Dog) animal;
+dog.bite();
+
+
+
+Why would this generally be worse:
+
+class EmployeeService extends EmployeeRepository {
+}
+
+than:
+
+class EmployeeService {
+
+
+    private EmployeeRepository employeeRepository;
+}
+
+
+
+Question : 
+class EmployeeService extends EmployeeRepository {
+}
+
+This means:
+
+EmployeeService IS-A EmployeeRepository
+
+Ask yourself: Is an employee service actually a repository? -> No.
+
+A service uses a repository.
+
+So the correct relationship is:
+
+class EmployeeService {
+    private EmployeeRepository employeeRepository;
+}
+
+This means:
+EmployeeService HAS-A EmployeeRepository -That is composition.
+The bigger reason is coupling. If EmployeeService extends EmployeeRepository, your service becomes tightly coupled to that repository implementation. It also inherits repository methods whether it needs them or not.
+
+With composition:
+class EmployeeService {
+    private final EmployeeRepository repository;
+    public EmployeeService(EmployeeRepository repository) {
+        this.repository = repository;
+    }
+}
+
+you can easily replace the repository:
+
+EmployeeRepository repo = new MongoEmployeeRepository();
+
+or later:
+
+EmployeeRepository repo = new JpaEmployeeRepository();
+
+without changing the EmployeeService design.
+
+A simple rule to remember:
+
+Inheritance → IS-A
+Composition → HAS-A
+
+So before using extends, ask:
+"Is this class genuinely a type of the parent class?"
+
+For Dog extends Animal → yes.
+For EmployeeService extends EmployeeRepository → no.
+That is why in Spring you typically see:
+
+@Service
+class EmployeeService {
+    private final EmployeeRepository repository;
+}
+
+instead of extending repositories.
+And this is exactly what people mean when they say:
+Favor composition over inheritance.
