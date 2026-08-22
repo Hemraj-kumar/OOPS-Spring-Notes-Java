@@ -158,3 +158,87 @@ class EmployeeService {
 instead of extending repositories.
 And this is exactly what people mean when they say:
 Favor composition over inheritance.
+
+
+
+Abstract Classes Vs Interfaces 
+An abstract class says:
+- “These classes are closely related and can share some common code.”
+abstract class Vehicle {
+    void start() {
+        System.out.println("Vehicle starts");
+    }
+
+    abstract void makeSound();
+}
+class Bike extends Vehicle {
+    void makeSound() {
+        System.out.println("Bike sound");
+    }
+}
+
+An interface says:
+- “Any class that agrees to this must provide these abilities.”
+-  An interface is more like a contract:
+interface Flyable {
+    void fly();
+}
+class Bird implements Flyable {
+    public void fly() {
+        System.out.println("Bird flies");
+    }
+}
+
+class Airplane implements Flyable {
+    public void fly() {
+        System.out.println("Airplane flies");
+    }
+}
+
+Overloading vs Overriding
+
+Overloading
+→ reference/argument type matters
+→ decided at compile time
+
+Overriding
+→ actual object matters
+→ decided at runtime
+
+| Overloading                                 | Overriding                 |
+| ------------------------------------------- | -------------------------- |
+| Same class usually                          | Parent-child relationship  |
+| Same method name                            | Same method name           |
+| Different parameters                        | Same parameters            |
+| Compile-time decision                       | Runtime decision           |
+| Return type may differ if signature permits | Return type same/covariant |
+| Inheritance not required                    | Inheritance required       |
+| Static binding                              | Dynamic binding            |
+
+
+#A covariant return type just means:
+When overriding a method, the child class can return a more specific type than the parent method.
+covariant return type is not about what fields get filled. It's about preserving the type contract while overriding.
+For example:
+
+class Animal {
+    String name;
+}
+
+class Dog extends Animal {
+    String breed;
+}
+
+Parent method:
+
+Animal getAnimal() {
+    return new Animal();
+}
+
+Child override:
+
+@Override
+Dog getAnimal() {
+    return new Dog();
+}
+
