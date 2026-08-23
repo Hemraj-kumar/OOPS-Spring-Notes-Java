@@ -242,3 +242,68 @@ Dog getAnimal() {
     return new Dog();
 }
 
+
+#static methods overriding 
+Static methods belong to the class, not the object.
+
+Example:
+class Animal {
+
+    static void sound() {
+        System.out.println("Animal");
+    }
+}
+class Dog extends Animal {
+
+    static void sound() {
+        System.out.println("Dog");
+    }
+}
+
+Then:
+Animal animal = new Dog();
+animal.sound();
+
+prints:
+Animal
+
+This is called method hiding, not overriding.
+Because static method resolution happens using the reference/class type.
+Rule: 
+private → cannot override
+static  → hidden, not overridden
+final   → cannot override
+
+
+class Animal {
+
+    void eat(Animal a) {
+        System.out.println("Animal eat");
+    }
+}
+
+class Dog extends Animal {
+
+    void eat(Dog d) {
+        System.out.println("Dog eat");
+    }
+}
+
+Animal a = new Dog();
+Dog d = new Dog();
+
+a.eat(d);
+Overloading → compiler decides using reference types.
+Overriding → runtime decides using the actual object.
+
+
+#This & Super
+this.variable     → current object's field
+this.method()     → current object's method
+this()            → same class constructor
+
+super.variable    → parent field
+super.method()    → parent implementation
+super()           → parent constructor
+
+
