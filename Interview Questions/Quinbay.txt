@@ -1,5 +1,4 @@
-Quinbay Interview Questions
-
+Quinbay Interview Questions (SDE2)
 Round 1: 
 1. Self Intro
 2. You are designing a system where we are uploading a csv file with millions of records . U need to update add these records into the database - design the system in optimal manner
