@@ -1,0 +1,36 @@
+Quinbay Interview Questions
+
+Round 1: 
+1. Self Intro
+2. You are designing a system where we are uploading a csv file with millions of records . U need to update add these records into the database - design the system in optimal manner
+3. Group Anagrams  - time complexity and space complexity 
+4. Java Fundamentals - what are the 4 pillars of oops
+5. Explain encapsulation / abstraction 
+6. String puzzles |  Integer vs int |  autoboxing questions
+7. Concurrency vs parallelism 
+8. Thread vs process
+9. Multithreading questions 
+10.  What is the purpose of Kafka , y do we need them.
+11. Diff bw Kafka vs API Impl
+12. ThreadPool based questions 
+13. Questions are mostly asked based on ur resume / profile
+
+Round2:
+1. Short intro on  what u worked , tech stack a& other basic stuffs
+2. Buy and sell stocks ( a slightly modified ) -Leetcode problem 
+3. What is DI , Bean 
+4. What are the design patterns 
+5. Explain and implement factory pattern - this was based on a puzzle 
+6. what is the different scopes of a bean - explain them in details
+7.  How many instances of a controller will get created when the application starts
+8. What are the diff bw primary | unique | foreign key 
+9. Basic SQL problem 
+10. Most of the questions were asked based on Fundamentals of Spring boot | Spring MVC 
+11. What is the flow of  objects when the springboot applications starts ( like DTO, DAO flows )
+
+Round3: 
+1. Design a URL shortener
+    1. Indepth questions how do u understand the High level systems 
+2. Y do u want to switch the company
+3. Hw was ur experience for the 1st 2 rounds, what are all the gaps that u found for yourself during the interview
+4. What’s ur future goal in the side of development
