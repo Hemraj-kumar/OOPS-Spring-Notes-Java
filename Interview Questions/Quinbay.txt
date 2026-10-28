@@ -12,6 +12,7 @@ Round 1:
 10.  What is the purpose of Kafka , y do we need them.
 11. Diff bw Kafka vs API Impl
 12. ThreadPool based questions 
+13. How does hashmap internally works
 13. Questions are mostly asked based on ur resume / profile
 
 Round2:

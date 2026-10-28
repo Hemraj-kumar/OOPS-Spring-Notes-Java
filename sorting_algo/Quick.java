@@ -1,4 +1,4 @@
-package sorting_algo;
+// package sorting_algo;
 public class Quick {
     static int f(int[]arr,int low,int hi){
         int pivot=arr[low];
